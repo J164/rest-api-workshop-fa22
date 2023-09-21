@@ -37,7 +37,7 @@ def get_all():
 
 
 @ app.get("/events/<event_id>")
-def get_event(event_id: int):
+def get_event(event_id: str):
     """
     Returns the event object for the given event_id
     """
@@ -57,17 +57,17 @@ def new():
 
 
 @ app.patch("/events/<event_id>")
-def update(event_id: int):
+def update(event_id: str):
     """
     Updates the event object for the given event_id
     """
 
-    events[event_id] = request.json
+    events[int(event_id)] = request.json
     return request.json
 
 
 @ app.delete("/events/<event_id>")
-def delete(event_id: int):  # no error handling
+def delete(event_id: str):  # no error handling
     """
     Deletes the event object for the given event_id
     """
